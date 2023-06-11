@@ -11,7 +11,7 @@ public class Person {
     @NotEmpty(message = "Name should not be empty")
     @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     private String name;
-    @Pattern(regexp = "[0-3]\\d/ [0-1]\\d/ \\d{4}", message = "A birthdate should be in this format: day/month/year")
+    @NotEmpty(message = "Birthdate should not be empty")
     private String birthDate;
 
     public Person() {
