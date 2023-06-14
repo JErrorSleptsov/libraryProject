@@ -2,16 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-<div th:each="book : ${books}">
-    <a th:href="@{/books/{id}(id=${book.getId()})}"
-       th:text="${book.getName() + ', ' + book.getAuthor()}">user</a>
+<h1>Список книг</h1>
+<div class="card w-75" style="margin: 0 auto; margin-top: 25px;" th:each="book,iterStat : ${books}">
+    <div class="card-body">
+        <h4 class="card-title" th:text="${book.getName()}">Заголовок 1</h4>
+        <h5 class="card-title" th:text="${book.getAuthor()}">Заголовок 2</h5>
+        <p class="card-text">События происходят на территории Японии, где проживает Ичиго Куросаки. Парень с ранних лет отличается от сверстников, ведь он умеет общаться с призраками. Однажды к нему в комнату залетает барышня, которую зовут Рукия Кучики. Незваная гостья является неким проводником человеческих душ. Девушка сильно удивляется тому, что юноша имеет способность видеть её и даже прикасаться. Пока ошеломлённая героиня томится в размышлениях, в помещение неожиданно врывается злой дух, называемый «пустым».
+            Рукия мгновенно бросается спасать мальчишку, в результате чего развязывается нешуточное противостояние и она получает сильнейшее ранение. Девочка поняла, что не может продолжать бороться и принимает решение передать собственные силы новоиспеченному приятелю. Ичиго ловко поглощает переданную энергию и расправляется со злодеем. Но оказывается, что поделившись даром, девушка стала настоящей преступницей и теперь её непременно накажут. Юному храбрецу ничего не остается, как встать на защиту подруги.</p>
+        <a th:href="@{/books/{id}(id=${book.getId()})}" class="btn btn-primary">Подробнее</a>
+    </div>
 </div>
-<br/>
 <hr/>
+<div th:insert="templates/Navbar :: navbar" th:fragment="navbar">  </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-<a href="/books/new">Create new book</a>
 </body>
 </html>

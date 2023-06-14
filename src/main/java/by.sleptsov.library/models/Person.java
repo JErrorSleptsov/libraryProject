@@ -8,10 +8,10 @@ import java.util.Objects;
 
 public class Person {
     private int id;
-    @NotEmpty(message = "Name should not be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
+    @NotEmpty(message = "Поле имя не может быть пустым")
+    @Size(min = 2, max = 30, message = "Имя не может быть меньше 2-х символов и больше 30-ти символов ")
     private String name;
-    @NotEmpty(message = "Birthdate should not be empty")
+    @NotEmpty(message = "Поле дата не может быть пустым")
     private String birthDate;
 
     public Person() {

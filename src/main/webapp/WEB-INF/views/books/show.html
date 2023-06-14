@@ -13,13 +13,17 @@
 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
     <input type="submit" value="Delete"/>
 </form>
-<form th:method="POST" th:action="@{/books/{id}(id=${book.getId()})}">
+<form th:method="POST" th:action="@{/books/{id}(id=${book.getId()})}" th:if="${people}">
     <label for="person">Выберите человека</label>
     <select th:object="${person}" th:field="*{id}" id="person">
         <option th:each="person: ${people}" th:value="${person.getId()}"
         th:text="${person.getName()}"></option>
     </select>
     <input type="submit" value="Назначить книгу"/>
+</form>
+<form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}" th:if="${owner}">
+    <p th:text="${owner.getName()} +' уже забрал эту книгу'"></p>
+    <input type="submit" value="Освободить книгу"/>
 </form>
 </body>
 </html>

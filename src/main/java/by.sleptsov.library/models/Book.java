@@ -1,13 +1,18 @@
 package by.sleptsov.library.models;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
 public class Book {
     private int id;
-    @NotEmpty(message = "Name should not be empty")
+
+    @NotEmpty(message = "Поле имя не может быть пустым")
+    @Size( max = 100, message = "Название не может превышать количества символов больше, чем 100 ")
     private String name;
+    @NotEmpty(message = "Поле автора не может быть пустым")
+    @Size( max = 50, message = "Имя автора не может превышать количества символов больше, чем 50 ")
     private String author;
 
     public Book() {
@@ -41,7 +46,6 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-
 
 
     @Override
